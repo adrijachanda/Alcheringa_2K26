@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alcheringa 2026 | Events at CSE (AIML), IEM Kolkata</title>
+  <meta name="description" content="Alcheringa 2026: hackathons, workshops, guest lectures and cultural nights from the Department of CSE (AIML), Institute of Engineering & Management, Kolkata.">
+  <meta name="theme-color" content="#4a0b17">\n  <!-- GitHub Pages-ready static site: save this file as index.html. -->
+
+  <!-- Set theme before first paint so there is no flash -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('alcheringa-theme'); } catch (e) {}
+      if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       TOKENS: maroon + beige, with a matching wine-dark theme
+       ========================================================= */
+    :root {
+      --bg: #f1e5cf;
+      --bg2: #e7d6b8;
+      --ticket: #faf2e2;
+      --field: #fffaf0;
+      --ink: #2b1015;
+      --muted: #6c4f55;
+      --line: rgba(106, 21, 35, .24);
+      --brand: #6a1523;
+      --brand-ink: #faf0dc;
+      --brand-text: #6a1523;
+      --hero-bg: #4a0b17;
+      --hero-ink: #f3e6cf;
+      --ok: #2f6b3c;
+      --bad: #a3202f;
+      --shadow: 0 18px 40px -22px rgba(74, 11, 23, .55);
+      --radius: 22px;
+      --notch: var(--bg);
+      --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+      --body: 'Figtree', 'Segoe UI', system-ui, sans-serif;
+    }
+    [data-theme="dark"] {
+      --bg: #150a0c;
+      --bg2: #1d0e12;
+      --ticket: #27141b;
+      --field: #1b0e12;
+      --ink: #f0e3cd;
+      --muted: #bda891;
+      --line: rgba(240, 227, 205, .17);
+      --brand: #b83a52;
+      --brand-ink: #fff4e3;
+      --brand-text: #e8a3b0;
+      --hero-bg: #2a0b14;
+      --hero-ink: #f0e3cd;
+      --ok: #7cc58b;
+      --bad: #ff8f9c;
+      --shadow: 0 18px 40px -22px rgba(0, 0, 0, .9);
+    }
+
+    /* =========================================================
+       BASE
+       ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    body {
+      margin: 0;
+      font: 400 1rem/1.65 var(--body);
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      transition: background .35s, color .35s;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--brand-text); }
+    h1, h2, h3, h4 { font-family: var(--display); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 .5em; }
+    h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; }
+    h3 { font-size: 1.35rem; font-weight: 700; }
+    p { margin: 0 0 1em; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    .wrap { width: min(1180px, 100% - 2.5rem); margin-inline: auto; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    :focus-visible { outline: 3px solid var(--brand-text); outline-offset: 3px; border-radius: 6px; }
+
+    .progress { position: fixed; inset: 0 0 auto 0; height: 4px; z-index: 100; background: transparent; }
+    .progress i { display: block; height: 100%; width: 0; background: var(--brand); }
+    [data-theme="light"] .progress i { background: #e9c98f; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      font: 700 .98rem/1 var(--body); padding: .95rem 1.5rem; border-radius: 999px;
+      border: 2px solid transparent; cursor: pointer; text-decoration: none;
+      transition: transform .15s, background .2s, color .2s, border-color .2s;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--brand); color: var(--brand-ink); }
+    .btn-primary:hover { background: var(--hero-bg); }
+    [data-theme="dark"] .btn-primary:hover { background: #d04b64; }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--brand-text); color: var(--brand-text); }
+    .btn-small { padding: .6rem 1rem; font-size: .88rem; }
+
+    /* =========================================================
+       FLOATING NAVIGATION
+       ========================================================= */
+    .site-header { position: fixed; top: 14px; inset-inline: 0; z-index: 90; pointer-events: none; }
+    .nav-pill {
+      pointer-events: auto;
+      width: min(1180px, 100% - 1.5rem); margin-inline: auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: .55rem .6rem .55rem 1rem; border-radius: 999px;
+      background: color-mix(in srgb, var(--ticket) 88%, transparent);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: var(--ink); min-width: 0; }
+    .mark {
+      flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+      background: var(--brand); color: var(--brand-ink); font: 800 .8rem var(--display); letter-spacing: 0;
+    }
+    img.mark { object-fit: contain; background: transparent; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+    .brand-text strong { font: 800 1.05rem var(--display); letter-spacing: -.01em; }
+    .brand-text span { font-size: .74rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .site-nav { display: flex; align-items: center; gap: .15rem; }
+    .site-nav a {
+      text-decoration: none; color: var(--ink); font-weight: 600; font-size: .92rem;
+      padding: .55rem .85rem; border-radius: 999px; transition: background .2s, color .2s;
+    }
+    .site-nav a:hover { background: var(--bg2); }
+    .site-nav a.is-active { background: var(--brand); color: var(--brand-ink); }
+    .theme-toggle {
+      margin-left: .4rem; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line);
+      background: var(--bg); color: var(--ink); font-size: 1.15rem; cursor: pointer; transition: transform .3s;
+    }
+    .theme-toggle:hover { transform: rotate(25deg); }
+    .nav-toggle { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); cursor: pointer; padding: 0; }
+    .nav-toggle span { display: block; width: 18px; height: 2px; background: var(--ink); margin: 4px auto; transition: transform .25s, opacity .25s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* =========================================================
+       HERO: one big ticket on a maroon field
+       ========================================================= */
+    .hero { background: var(--hero-bg); color: var(--hero-ink); padding: 8.5rem 0 0; position: relative; overflow: hidden; --notch: var(--hero-bg); }
+    .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; border: 1.5px solid rgba(243, 230, 207, .12); pointer-events: none; }
+    .hero::before { width: 780px; height: 780px; right: -260px; top: -300px; }
+    .hero::after { width: 480px; height: 480px; right: -110px; top: -150px; }
+
+    .big-ticket {
+      position: relative; display: grid; grid-template-columns: 1.7fr 1fr;
+      background: var(--ticket); color: var(--ink); border-radius: 32px; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7);
+      z-index: 1;
+    }
+    .big-ticket::before, .big-ticket::after, .ticket::before, .ticket::after, .pass::before, .pass::after {
+      content: ""; position: absolute; width: 34px; height: 34px; border-radius: 50%; background: var(--notch); z-index: 2;
+    }
+    .big-ticket::before { top: -17px; left: calc(63.0% - 17px); }
+    .big-ticket::after { bottom: -17px; left: calc(63.0% - 17px); }
+    .ticket-main { padding: clamp(1.6rem, 4vw, 3.4rem); }
+    .date-badge {
+      display: inline-block; padding: .4rem .9rem; border-radius: 999px; background: var(--bg2);
+      font-weight: 600; font-size: .85rem; margin-bottom: 1.4rem; border: 1px solid var(--line);
+    }
+    .hero h1 { font-size: clamp(2.5rem, 6.2vw, 5.2rem); font-weight: 800; margin-bottom: .35em; }
+    .hero h1 em { font-style: normal; color: var(--brand-text); }
+    .hero-lead { font-size: 1.1rem; color: var(--muted); max-width: 56ch; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.8rem; }
+
+    .countdown-card { padding: clamp(1.4rem, 3vw, 2.4rem); border-left: 2px dashed var(--line); display: flex; flex-direction: column; justify-content: center; }
+    .countdown-label { font-weight: 600; color: var(--muted); font-size: .9rem; margin-bottom: .3rem; }
+    .countdown-title { font-size: 1.5rem; font-weight: 800; margin-bottom: .2rem; }
+    .countdown-meta { color: var(--muted); font-size: .92rem; margin-bottom: 1.2rem; }
+    .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
+    .countdown div { background: var(--hero-bg); color: var(--hero-ink); border-radius: 14px; padding: .8rem .2rem; text-align: center; }
+    .countdown span { display: block; font: 800 clamp(1.4rem, 2.6vw, 2rem)/1 var(--display); font-variant-numeric: tabular-nums; }
+    .countdown small { font-size: .72rem; opacity: .8; }
+    .clock { margin: 1.1rem 0 0; font-size: .9rem; color: var(--muted); }
+    .clock time { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .marquee { margin-top: 3.2rem; border-block: 1px solid rgba(243, 230, 207, .22); overflow: hidden; padding: 1rem 0; position: relative; z-index: 1; }
+    .marquee-track { display: flex; width: max-content; gap: 3rem; animation: slide 38s linear infinite; font: 700 1.6rem var(--display); letter-spacing: -.01em; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track span { white-space: nowrap; display: inline-flex; align-items: center; gap: 3rem; }
+    .marquee-track span::after { content: "\2726"; font-size: 1rem; opacity: .6; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+
+    /* Stats */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: -1px; padding: 3rem 0 1rem; }
+    .stat { border-left: 3px solid var(--brand); padding-left: 1rem; }
+    .stat b { display: block; font: 800 clamp(2.2rem, 5vw, 3.4rem)/1 var(--display); color: var(--brand-text); font-variant-numeric: tabular-nums; }
+    .stat span { color: var(--muted); font-size: .95rem; }
+
+    /* =========================================================
+       SECTIONS
+       ========================================================= */
+    .section { padding: clamp(4rem, 9vw, 7rem) 0; }
+    .section-tinted { background: var(--bg2); --notch: var(--bg2); }
+    .section-head { max-width: 62ch; margin-bottom: 2.4rem; }
+    .section-head p { color: var(--muted); font-size: 1.08rem; }
+
+    /* ---------- Events ---------- */
+    .toolbar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; margin-bottom: 1.6rem; }
+    .filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .chip {
+      font: 600 .9rem var(--body); padding: .6rem 1.1rem; border-radius: 999px; border: 1.5px solid var(--line);
+      background: transparent; color: var(--ink); cursor: pointer; transition: all .2s;
+    }
+    .chip:hover { border-color: var(--brand-text); }
+    .chip.is-active { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+    .search { position: relative; }
+    .search input { width: min(300px, 100%); padding: .7rem 1rem; border-radius: 999px; border: 1.5px solid var(--line); background: var(--field); color: var(--ink); font: 500 .95rem var(--body); }
+
+    .event-list { display: grid; gap: 1.2rem; }
+    .ticket {
+      position: relative; display: grid; grid-template-columns: 130px 1fr auto; background: var(--ticket);
+      border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--line);
+      transition: transform .25s;
+    }
+    .ticket:hover { transform: translateY(-3px); }
+    .ticket::before { top: -17px; left: 113px; }
+    .ticket::after { bottom: -17px; left: 113px; }
+    .ticket.is-featured { border: 2px solid var(--brand); }
+    .ticket-stub {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: var(--brand); color: var(--brand-ink); border-radius: var(--radius) 0 0 var(--radius); padding: 1rem;
+      border-right: 2px dashed rgba(250, 240, 220, .45); text-align: center;
+    }
+    .ticket-stub .mo { font-weight: 600; font-size: .95rem; }
+    .ticket-stub .dy { font: 800 3rem/1 var(--display); }
+    .ticket-stub .wd { font-size: .85rem; opacity: .85; }
+    .ticket-body { padding: 1.4rem 1.6rem; min-width: 0; }
+    .tag { display: inline-block; font-weight: 700; font-size: .78rem; padding: .22rem .7rem; border-radius: 999px; border: 1.5px solid var(--brand-text); color: var(--brand-text); margin-bottom: .6rem; }
+    .ticket-body h3 { margin-bottom: .3rem; }
+    .ticket-body p { color: var(--muted); font-size: .96rem; margin-bottom: .8rem; max-width: 62ch; }
+    .meta { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font-size: .88rem; font-weight: 600; margin-bottom: .9rem; }
+    .meta li::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--brand-text); margin-right: .45rem; }
+    .seats { display: flex; align-items: center; gap: .8rem; font-size: .84rem; color: var(--muted); }
+    .bar { flex: 0 1 180px; height: 8px; border-radius: 99px; background: var(--bg2); overflow: hidden; width: 180px; }
+    .bar i { display: block; height: 100%; background: var(--brand); border-radius: 99px; }
+    .ticket-actions { display: flex; flex-direction: column; justify-content: center; gap: .55rem; padding: 1.2rem 1.4rem; border-left: 2px dashed var(--line); }
+    .empty-note { text-align: center; padding: 2.5rem; border: 2px dashed var(--line); border-radius: var(--radius); color: var(--muted); }
+
+    /* ---------- Registration ---------- */
+    .form-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+    .form-notes { display: grid; gap: .6rem; margin: 1.4rem 0 2rem; }
+    .form-notes li { padding-left: 1.7rem; position: relative; color: var(--muted); }
+    .form-notes li::before { content: "\2713"; position: absolute; left: 0; font-weight: 800; color: var(--brand-text); }
+
+    .pass { position: relative; background: var(--hero-bg); color: var(--hero-ink); border-radius: 22px; display: grid; grid-template-columns: 1fr auto; box-shadow: var(--shadow); }
+    .pass::before { top: -17px; right: 108px; }
+    .pass::after { bottom: -17px; right: 108px; }
+    .pass-main { padding: 1.4rem 1.6rem; min-width: 0; }
+    .pass-main small { opacity: .7; font-size: .78rem; display: block; margin-bottom: .1rem; }
+    .pass-name { font: 800 1.7rem/1.1 var(--display); margin-bottom: .9rem; overflow-wrap: anywhere; }
+    .pass-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem 1rem; font-weight: 600; font-size: .95rem; }
+    .pass-grid div { min-width: 0; overflow-wrap: anywhere; }
+    .pass-side { width: 124px; border-left: 2px dashed rgba(243, 230, 207, .35); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; padding: 1rem; text-align: center; }
+    .stamp { border: 2.5px solid currentColor; border-radius: 10px; padding: .25rem .55rem; font: 800 .85rem var(--display); transform: rotate(-8deg); opacity: .6; transition: all .3s; }
+    .pass.is-confirmed .stamp { color: #b6e3bf; opacity: 1; transform: rotate(-8deg) scale(1.1); }
+    .pass-id { font-size: .72rem; opacity: .8; font-variant-numeric: tabular-nums; word-break: break-all; }
+    .pass-hint { font-size: .85rem; color: var(--muted); margin-top: .7rem; }
+
+    .my-passes { margin-top: 1.8rem; }
+    .my-passes h3 { font-size: 1.1rem; }
+    .my-passes li { display: flex; justify-content: space-between; align-items: center; gap: .8rem; padding: .7rem 1rem; border: 1px solid var(--line); border-radius: 14px; background: var(--ticket); margin-bottom: .5rem; font-size: .92rem; }
+    .my-passes li span { min-width: 0; overflow-wrap: anywhere; }
+    .link-btn { background: none; border: none; color: var(--bad); font: 700 .85rem var(--body); cursor: pointer; text-decoration: underline; padding: 0; }
+
+    .form { background: var(--ticket); padding: clamp(1.4rem, 3vw, 2.2rem); border-radius: 26px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .form h3 { margin-bottom: 1.2rem; }
+    .field { margin: 0 0 1.1rem; border: 0; padding: 0; min-width: 0; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    label, legend { display: block; font-weight: 700; font-size: .9rem; margin-bottom: .35rem; padding: 0; }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+      width: 100%; padding: .8rem .95rem; border-radius: 12px; border: 1.5px solid var(--line);
+      background: var(--field); color: var(--ink); font: 500 1rem var(--body); transition: border-color .2s, box-shadow .2s;
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--brand-text); box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand-text) 22%, transparent); }
+    .is-invalid { border-color: var(--bad) !important; }
+    .radio-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .radio-row label { display: inline-flex; align-items: center; gap: .45rem; margin: 0; font-weight: 500; padding: .5rem .9rem; border: 1.5px solid var(--line); border-radius: 999px; cursor: pointer; }
+    .radio-row input { accent-color: var(--brand); }
+    .radio-row label:has(input:checked) { border-color: var(--brand-text); background: var(--bg2); }
+    .error { display: block; min-height: 1.1em; color: var(--bad); font-size: .82rem; font-weight: 600; margin-top: .25rem; }
+    .form-status { margin: .9rem 0 0; font-weight: 700; }
+    .form-status.ok { color: var(--ok); }
+    .form-status.bad { color: var(--bad); }
+    .counter { float: right; font-weight: 500; color: var(--muted); font-size: .8rem; }
+
+    /* ---------- Schedule ---------- */
+    .tabs { display: flex; gap: .5rem; margin-bottom: 1.6rem; flex-wrap: wrap; }
+    .timeline { position: relative; display: grid; gap: 0; max-width: 820px; }
+    .timeline::before { content: ""; position: absolute; left: 112px; top: 8px; bottom: 8px; width: 3px; background: var(--line); }
+    .tl-item { display: grid; grid-template-columns: 112px 1fr; gap: 0; position: relative; padding-bottom: 1.5rem; }
+    .tl-time { font: 800 1.15rem var(--display); padding-right: 1.4rem; text-align: right; font-variant-numeric: tabular-nums; }
+    .tl-card { padding-left: 1.8rem; position: relative; }
+    .tl-card::before { content: ""; position: absolute; left: -9px; top: .35rem; width: 20px; height: 20px; border-radius: 50%; background: var(--bg); border: 4px solid var(--brand-text); }
+    .tl-card h4 { font-size: 1.15rem; margin-bottom: .1rem; }
+    .tl-card p { color: var(--muted); margin: 0; font-size: .95rem; }
+
+    /* ---------- Guests ---------- */
+    .guest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+    .guest { background: var(--ticket); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; box-shadow: var(--shadow); }
+    .avatar { width: 76px; height: 76px; border-radius: 50%; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font: 800 1.6rem var(--display); margin-bottom: 1rem; }
+    .guest:nth-child(even) .avatar { background: var(--hero-bg); }
+    .guest h3 { font-size: 1.15rem; margin-bottom: .1rem; }
+    .guest .role { color: var(--brand-text); font-weight: 600; font-size: .9rem; margin-bottom: .6rem; }
+    .guest p:last-child { color: var(--muted); font-size: .92rem; margin: 0; }
+
+    /* ---------- Gallery ---------- */
+    .gallery { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 160px; gap: 1rem; }
+    .gallery-item { grid-column: span 2; grid-row: span 2; margin: 0; position: relative; border-radius: 20px; overflow: hidden; cursor: zoom-in; background: var(--brand); color: var(--brand-ink); border: 0; padding: 0; text-align: left; display: block; width: 100%; font: inherit; }
+    .gallery-item:nth-child(2n) { background: var(--hero-bg); }
+    .gallery-item:nth-child(3n) { background: #8b3a47; }
+    .gallery-item:nth-child(5) { background: #b99a68; color: #2b1015; }
+    .ph-art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transition: transform .6s; }
+    .gallery-item:hover .ph-art { transform: scale(1.05); }
+    .gallery-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.2rem 1rem .9rem; font-weight: 600; font-size: .92rem; background: linear-gradient(transparent, rgba(30, 5, 12, .85)); color: #f7ead3; transform: translateY(30%); opacity: 0; transition: all .3s; }
+    .gallery-item:hover figcaption, .gallery-item:focus-visible figcaption { transform: none; opacity: 1; }
+
+    dialog { border: 0; padding: 0; background: transparent; color: var(--ink); max-width: 100vw; }
+    dialog::backdrop { background: rgba(20, 4, 9, .82); backdrop-filter: blur(4px); }
+    .lightbox-box { position: relative; width: min(900px, 94vw); background: var(--ticket); border-radius: 24px; overflow: hidden; }
+    .lightbox-stage { position: relative; aspect-ratio: 16 / 10; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; }
+    .lightbox-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .lightbox-cap { padding: 1rem 1.4rem 1.3rem; font-weight: 600; display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+    .icon-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--ticket); color: var(--ink); font-size: 1.2rem; cursor: pointer; }
+    .icon-btn:hover { background: var(--brand); color: var(--brand-ink); }
+    .lightbox-close { position: absolute; top: 12px; right: 12px; z-index: 3; }
+    .lightbox-nav { display: flex; gap: .5rem; }
+
+    .modal-box { width: min(640px, 94vw); background: var(--ticket); border-radius: 26px; padding: clamp(1.4rem, 4vw, 2.4rem); position: relative; max-height: 90vh; overflow: auto; }
+    .modal-box h3 { font-size: 1.8rem; padding-right: 3rem; }
+    .modal-close { position: absolute; top: 14px; right: 14px; }
+    .modal-list { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem 1.2rem; margin: 1.2rem 0; padding: 1rem 0; border-block: 2px dashed var(--line); }
+    .modal-list dt { font-size: .8rem; color: var(--muted); font-weight: 600; }
+    .modal-list dd { margin: 0; font-weight: 700; }
+
+    /* ---------- Crew ---------- */
+    .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+    .about-grid p { color: var(--muted); font-size: 1.05rem; }
+    .labs { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.4rem; }
+    .labs span { padding: .45rem .9rem; border-radius: 999px; border: 1.5px solid var(--brand-text); color: var(--brand-text); font-weight: 600; font-size: .88rem; }
+    .coordinators h3 { margin-bottom: 1.2rem; }
+    .coord-list { display: grid; gap: 1rem; margin: 0; }
+    .coord-list > div { display: grid; grid-template-columns: 62px 1fr; gap: 1rem; align-items: center; background: var(--ticket); border: 1px solid var(--line); border-radius: 20px; padding: 1rem 1.2rem; box-shadow: var(--shadow); }
+    .coord-list .avatar { width: 62px; height: 62px; font-size: 1.2rem; margin: 0; }
+    .coord-list dt { font-size: .8rem; font-weight: 700; color: var(--brand-text); }
+    .coord-list dd { margin: 0; font-weight: 700; line-height: 1.35; }
+    .coord-list dd span { display: block; font-weight: 500; color: var(--muted); font-size: .9rem; }
+
+    /* ---------- FAQ ---------- */
+    .faq { max-width: 840px; display: grid; gap: .8rem; }
+    details { background: var(--ticket); border: 1px solid var(--line); border-radius: 18px; padding: 0 1.4rem; }
+    summary { cursor: pointer; font: 700 1.08rem var(--display); padding: 1.1rem 0; list-style: none; display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 1.6rem; line-height: 1; color: var(--brand-text); transition: transform .25s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { color: var(--muted); padding-bottom: 1.1rem; margin: 0; }
+
+    /* ---------- Contact ---------- */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+    .contact-details { font-style: normal; display: grid; gap: 1.2rem; }
+    .contact-details p { margin: 0; padding-left: 1.2rem; border-left: 3px solid var(--brand); color: var(--muted); }
+    .contact-details strong { color: var(--ink); }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: var(--hero-bg); color: var(--hero-ink); padding: 4rem 0 2rem; }
+    .footer-top { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: center; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(243, 230, 207, .22); }
+    .footer-top h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0; }
+    .news { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .news input { flex: 1 1 200px; border-radius: 999px; background: rgba(255, 255, 255, .08); border-color: rgba(243, 230, 207, .3); color: var(--hero-ink); }
+    .news input::placeholder { color: rgba(243, 230, 207, .6); }
+    .news .btn-primary { background: #f3e6cf; color: #4a0b17; }
+    .news small { flex-basis: 100%; min-height: 1.2em; font-weight: 600; }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 1.8rem; font-size: .9rem; opacity: .85; }
+    .footer-inner p { margin: 0; }
+    .footer-inner a { color: var(--hero-ink); font-weight: 700; }
+
+    /* Toast */
+    .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 220%); opacity: 0; pointer-events: none; background: var(--hero-bg); color: var(--hero-ink); padding: .9rem 1.4rem; border-radius: 999px; font-weight: 700; z-index: 120; box-shadow: var(--shadow); transition: transform .35s; max-width: 92vw; border: 1px solid rgba(243, 230, 207, .3); }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+
+    /* Scroll reveal (only the section headings, kept subtle) */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s, transform .6s; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 960px) {
+      .nav-toggle { display: block; }
+      .site-nav {
+        position: absolute; top: calc(100% + 10px); left: 0; right: 0; flex-direction: column; align-items: stretch;
+        background: var(--ticket); border: 1px solid var(--line); border-radius: 26px; padding: .8rem; box-shadow: var(--shadow);
+        opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all .25s; pointer-events: auto;
+      }
+      .site-nav.open { opacity: 1; visibility: visible; transform: none; }
+      .site-nav a { padding: .9rem 1rem; }
+      .theme-toggle { margin: .4rem 0 0; width: 100%; border-radius: 14px; }
+      .nav-pill { position: relative; width: min(1180px, 100% - 1.5rem); }
+      .site-header .nav-pill { position: relative; }
+      .big-ticket { grid-template-columns: 1fr; }
+      .big-ticket::before, .big-ticket::after { display: none; }
+      .countdown-card { border-left: 0; border-top: 2px dashed var(--line); }
+      .stats { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
+      .form-grid, .about-grid, .contact-grid, .footer-top { grid-template-columns: 1fr; }
+      .ticket { grid-template-columns: 100px 1fr; }
+      .ticket::before, .ticket::after { left: 83px; }
+      .ticket-actions { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; border-left: 0; border-top: 2px dashed var(--line); }
+      .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+      .gallery-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+      .gallery-item figcaption { opacity: 1; transform: none; }
+    }
+    @media (max-width: 560px) {
+      .brand-text span { display: none; }
+      .field-row, .modal-list { grid-template-columns: 1fr; }
+      .ticket { grid-template-columns: 1fr; }
+      .ticket::before, .ticket::after { display: none; }
+      .ticket-stub { flex-direction: row; gap: .7rem; border-radius: var(--radius) var(--radius) 0 0; border-right: 0; border-bottom: 2px dashed rgba(250, 240, 220, .45); padding: .7rem; }
+      .ticket-stub .dy { font-size: 2rem; }
+      .pass { grid-template-columns: 1fr; }
+      .pass::before, .pass::after { display: none; }
+      .pass-side { width: auto; border-left: 0; border-top: 2px dashed rgba(243, 230, 207, .35); flex-direction: row; justify-content: space-between; }
+      .timeline::before { left: 78px; }
+      .tl-item { grid-template-columns: 78px 1fr; }
+      .tl-time { font-size: 1rem; padding-right: 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="person" viewBox="0 0 20 30"><circle cx="10" cy="7" r="6"/><path d="M0 30C0 17 4 14 10 14S20 17 20 30Z"/></symbol></defs></svg>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+  <!-- ===================== HEADER / NAVIGATION ===================== -->
+  <header class="site-header" id="top">
+    <div class="nav-pill">
+      <a href="#overview" class="brand">
+        <!-- Swap in your real logo: put it at images/logo.png. The IEM monogram shows if the file is missing. -->
+        <img src="images/logo.png" alt="IEM logo" class="mark" width="40" height="40"
+             onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'mark',textContent:'IEM'}))">
+        <span class="brand-text">
+          <strong>Alcheringa 2026</strong>
+          <span>CSE (AIML), IEM Kolkata</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="#overview">Overview</a>
+        <a href="#lineup">Lineup</a>
+        <a href="#passes">Get a pass</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#gallery">Memory wall</a>
+        <a href="#crew">The crew</a>
+        <a href="#contact">Reach out</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" title="Switch between light and dark">
+          <span class="theme-icon" aria-hidden="true">&#9790;</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== HOME / HERO ===================== -->
+    <section class="hero" id="overview">
+      <div class="wrap">
+        <div class="big-ticket">
+          <div class="ticket-main">
+            <span class="date-badge">Odd semester 2026&ndash;27, admit all B.Tech students</span>
+            <h1>Build it, break it, <em>show it off.</em></h1>
+            <p class="hero-lead">
+              Hackathons, workshops, guest lectures and the annual fest, all in one place.
+              See what is coming up, grab your pass, and look back at what the department has pulled off.
+            </p>
+            <div class="hero-actions">
+              <a href="#lineup" class="btn btn-primary">Browse the lineup</a>
+              <a href="#passes" class="btn btn-ghost">Get your pass</a>
+            </div>
+          </div>
+
+          <!-- JS feature 1: live countdown to the next event -->
+          <aside class="countdown-card" aria-live="polite">
+            <p class="countdown-label">Next up</p>
+            <h2 class="countdown-title" id="cdTitle">Loading&hellip;</h2>
+            <p class="countdown-meta" id="cdMeta"></p>
+            <div class="countdown" id="countdown">
+              <div><span id="cdDays">00</span><small>days</small></div>
+              <div><span id="cdHours">00</span><small>hours</small></div>
+              <div><span id="cdMins">00</span><small>minutes</small></div>
+              <div><span id="cdSecs">00</span><small>seconds</small></div>
+            </div>
+            <!-- JS feature 2: digital clock -->
+            <p class="clock">Time in Kolkata: <time id="clock">--:--:--</time></p>
+          </aside>
+        </div>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track" id="marqueeTrack"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="stats" id="stats">
+        <div class="stat"><b data-count="8">0</b><span>events this semester</span></div>
+        <div class="stat"><b data-count="1200" data-suffix="+">0</b><span>students expected</span></div>
+        <div class="stat"><b data-count="12">0</b><span>industry and academic guests</span></div>
+        <div class="stat"><b data-count="24" data-suffix=" hrs">0</b><span>of non-stop hacking</span></div>
+      </div>
+    </div>
+
+    <!-- ===================== EVENTS ===================== -->
+    <section class="section" id="lineup">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>The lineup</h2>
+          <p>Search by name, filter by type, or scroll through everything scheduled this semester.</p>
+        </div>
+
+        <div class="toolbar">
+          <!-- JS feature 3: dynamic event filtering -->
+          <div class="filters" id="eventFilters" role="group" aria-label="Filter events by category">
+            <button class="chip is-active" data-filter="all">All</button>
+            <button class="chip" data-filter="technical">Technical</button>
+            <button class="chip" data-filter="workshop">Workshops</button>
+            <button class="chip" data-filter="cultural">Cultural</button>
+            <button class="chip" data-filter="lecture">Lectures</button>
+          </div>
+          <div class="search">
+            <label for="eventSearch" class="sr-only">Search events</label>
+            <input type="search" id="eventSearch" placeholder="Search events" autocomplete="off">
+          </div>
+        </div>
+
+        <ol class="event-list" id="eventList">
+          <!-- Rendered by the script below from the EVENTS array -->
+        </ol>
+        <p class="empty-note" id="eventEmpty" hidden>No events match that. Try another category or clear the search.</p>
+      </div>
+    </section>
+
+    <!-- ===================== REGISTRATION ===================== -->
+    <section class="section section-tinted" id="passes">
+      <div class="wrap form-grid">
+        <div>
+          <div class="section-head reveal">
+            <h2>Get your pass</h2>
+            <p>
+              Open to all B.Tech students of IEM. One form per student per event. This demo stores passes only in this browser; it does not submit registrations to a server.
+              Your pass below fills in as you type.
+            </p>
+          </div>
+
+          <!-- Live pass preview -->
+          <div class="pass" id="pass">
+            <div class="pass-main">
+              <small>Admit one</small>
+              <div class="pass-name" id="pvName">Your name</div>
+              <div class="pass-grid">
+                <div><small>Roll number</small><span id="pvRoll">0000000000</span></div>
+                <div><small>Department</small><span id="pvDept">&mdash;</span></div>
+                <div><small>Event</small><span id="pvEvent">Pick an event</span></div>
+                <div><small>Date</small><span id="pvDate">&mdash;</span></div>
+              </div>
+            </div>
+            <div class="pass-side">
+              <span class="stamp" id="pvStamp">Draft</span>
+              <span class="pass-id" id="pvId">No ID yet</span>
+            </div>
+          </div>
+          <p class="pass-hint">Keep the pass ID. You will need it at the registration desk.</p>
+
+          <ul class="form-notes">
+            <li>Use your official IEM roll number (10 digits, e.g. 1234567890).</li>
+            <li>Team events: each member registers separately.</li>
+            <li>Registration closes 48 hours before the event.</li>
+          </ul>
+
+          <div class="my-passes" id="myPasses" hidden>
+            <h3>Your passes on this device</h3>
+            <ul id="myPassList"></ul>
+          </div>
+        </div>
+
+        <!-- JS feature 4: form validation -->
+        <form class="form" id="regForm" novalidate>
+          <h3>Registration form</h3>
+          <div class="field">
+            <label for="studentName">Student name</label>
+            <input type="text" id="studentName" name="studentName" placeholder="e.g. Ananya Sen" autocomplete="name">
+            <small class="error" id="err-studentName"></small>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="rollNo">Roll number</label>
+              <input type="text" id="rollNo" name="rollNo" inputmode="numeric" maxlength="10" placeholder="10-digit roll no.">
+              <small class="error" id="err-rollNo"></small>
+            </div>
+            <div class="field">
+              <label for="department">Department</label>
+              <select id="department" name="department">
+                <option value="">Select department</option>
+                <option>CSE (AIML)</option>
+                <option>CSE</option>
+                <option>CSBS</option>
+                <option>IT</option>
+                <option>ECE</option>
+                <option>EE</option>
+                <option>ME</option>
+                <option>CE</option>
+              </select>
+              <small class="error" id="err-department"></small>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@iem.edu.in" autocomplete="email">
+              <small class="error" id="err-email"></small>
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" inputmode="tel" placeholder="10-digit mobile number" autocomplete="tel">
+              <small class="error" id="err-phone"></small>
+            </div>
+          </div>
+
+          <fieldset class="field">
+            <legend>Gender</legend>
+            <div class="radio-row" id="genderGroup">
+              <label><input type="radio" name="gender" value="Female"> Female</label>
+              <label><input type="radio" name="gender" value="Male"> Male</label>
+              <label><input type="radio" name="gender" value="Other"> Other</label>
+              <label><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+            </div>
+            <small class="error" id="err-gender"></small>
+          </fieldset>
+
+          <div class="field">
+            <label for="eventSelect">Event</label>
+            <select id="eventSelect" name="eventSelect">
+              <option value="">Select an event</option>
+              <!-- Options filled by the script below -->
+            </select>
+            <small class="error" id="err-eventSelect"></small>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Get my pass</button>
+          <p class="form-status" id="regStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===================== SCHEDULE ===================== -->
+    <section class="section" id="schedule">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Alcheringa fest, hour by hour</h2>
+          <p>The two-day fest on 12 and 13 December is the big one. Here is how the days run.</p>
+        </div>
+        <div class="tabs" id="dayTabs" role="tablist" aria-label="Fest day">
+          <button class="chip is-active" role="tab" aria-selected="true" data-day="d1">Day 1, Sat 12 Dec</button>
+          <button class="chip" role="tab" aria-selected="false" data-day="d2">Day 2, Sun 13 Dec</button>
+        </div>
+        <div class="timeline" id="timeline" role="tabpanel"></div>
+      </div>
+    </section>
+
+    <!-- ===================== GUESTS ===================== -->
+    <section class="section section-tinted" id="guests">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Guests on stage</h2>
+          <p>Researchers, engineers and founders who are coming to talk to you, not at you.</p>
+        </div>
+        <!-- Placeholder guests: replace with your confirmed speakers -->
+        <div class="guest-grid">
+          <article class="guest">
+            <div class="avatar" aria-hidden="true">MI</div>
+            <h3>Dr. Meera Iyer</h3>
+            <p class="role">Research scientist, applied machine learning</p>
+            <p>Opens the fest with a keynote on building models that survive contact with real data.</p>
+          </article>
+          <article class="guest">
+            <div class="avatar" aria-hidden="true">KS</div>
+            <h3>Kabir Sen</h3>
+            <p class="role">Engineering lead, cloud platforms</p>
+            <p>Walks through taking a notebook to production, including the parts that break at 2 a.m.</p>
+          </article>
+          <article class="guest">
+            <div class="avatar" aria-hidden="true">TG</div>
+            <h3>Tanvi Ghosh</h3>
+            <p class="role">Founder, education startup</p>
+            <p>Shares what it takes to turn a hackathon project into a company with paying users.</p>
+          </article>
+          <article class="guest">
+            <div class="avatar" aria-hidden="true">RB</div>
+            <h3>Prof. R. Banerjee</h3>
+            <p class="role">Visiting faculty, responsible AI</p>
+            <p>Leads the closing panel on fairness, privacy and who answers when a model gets it wrong.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Memory wall</h2>
+          <p>Moments from last year's events. Hover or tap an image to see its caption, open it for a bigger view.</p>
+        </div>
+
+        <!-- Each tile shows your real photo from images/ if the file exists, and a built-in illustrated scene if it does not -->
+        <div class="gallery" id="gallery-grid">
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Open photo: HackIEM 2025, 24-hour hackathon">
+            <svg class="ph-art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="a1" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e9c98f" stop-opacity=".55"/><stop offset="1" stop-color="#e9c98f" stop-opacity="0"/></radialGradient></defs>
+<rect width="400" height="300" fill="#2a0b14"/>
+<path d="M-10 28 Q100 78 200 30 T410 30" fill="none" stroke="#b99a68" stroke-width="2"/>
+<g fill="#f3e6cf"><circle cx="38" cy="50" r="4"/><circle cx="100" cy="60" r="4"/><circle cx="160" cy="46" r="4"/><circle cx="236" cy="42" r="4"/><circle cx="296" cy="58" r="4"/><circle cx="360" cy="50" r="4"/></g>
+<circle cx="322" cy="96" r="26" fill="#f3e6cf"/><circle cx="322" cy="96" r="21" fill="none" stroke="#6a1523" stroke-width="2"/>
+<path d="M322 96V81M322 96L333 102" stroke="#4a0b17" stroke-width="3" stroke-linecap="round"/>
+<text x="322" y="138" text-anchor="middle" font-family="Bricolage Grotesque, Segoe UI, sans-serif" font-weight="800" font-size="14" fill="#e9c98f">24 hrs</text>
+<g fill="#8b3a47"><use href="#person" x="50" y="128" width="48" height="72" fill="#8b3a47"/><use href="#person" x="160" y="128" width="48" height="72" fill="#a04858"/><use href="#person" x="270" y="128" width="48" height="72" fill="#8b3a47"/></g>
+<rect y="205" width="400" height="95" fill="#4a0b17"/><rect y="200" width="400" height="8" fill="#8b3a47"/><g transform="translate(46,146)"><ellipse cx="50" cy="32" rx="78" ry="52" fill="url(#a1)"/>
+<rect width="100" height="58" rx="5" fill="#1a0509" stroke="#b99a68" stroke-width="2"/>
+<rect x="9" y="10" width="42" height="4" rx="2" fill="#e9c98f"/><rect x="9" y="20" width="66" height="4" rx="2" fill="#b99a68"/>
+<rect x="17" y="30" width="34" height="4" rx="2" fill="#e9c98f" opacity=".7"/><rect x="17" y="40" width="54" height="4" rx="2" fill="#b99a68" opacity=".7"/>
+<path d="M-8 64H108L100 58H0Z" fill="#b99a68"/></g><g transform="translate(150,146)"><ellipse cx="50" cy="32" rx="78" ry="52" fill="url(#a1)"/>
+<rect width="100" height="58" rx="5" fill="#1a0509" stroke="#b99a68" stroke-width="2"/>
+<rect x="9" y="10" width="42" height="4" rx="2" fill="#e9c98f"/><rect x="9" y="20" width="66" height="4" rx="2" fill="#b99a68"/>
+<rect x="17" y="30" width="34" height="4" rx="2" fill="#e9c98f" opacity=".7"/><rect x="17" y="40" width="54" height="4" rx="2" fill="#b99a68" opacity=".7"/>
+<path d="M-8 64H108L100 58H0Z" fill="#b99a68"/></g><g transform="translate(254,146)"><ellipse cx="50" cy="32" rx="78" ry="52" fill="url(#a1)"/>
+<rect width="100" height="58" rx="5" fill="#1a0509" stroke="#b99a68" stroke-width="2"/>
+<rect x="9" y="10" width="42" height="4" rx="2" fill="#e9c98f"/><rect x="9" y="20" width="66" height="4" rx="2" fill="#b99a68"/>
+<rect x="17" y="30" width="34" height="4" rx="2" fill="#e9c98f" opacity=".7"/><rect x="17" y="40" width="54" height="4" rx="2" fill="#b99a68" opacity=".7"/>
+<path d="M-8 64H108L100 58H0Z" fill="#b99a68"/></g></svg>
+            <img src="images/hackathon.jpg" alt="Students working at laptops during the 24-hour hackathon" loading="lazy" onerror="this.remove()">
+            <figcaption>HackIEM 2025, 24-hour hackathon</figcaption>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Open photo: Innovacion, annual tech fest">
+            <svg class="ph-art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="a2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a0b14"/><stop offset="1" stop-color="#7a1a2c"/></linearGradient></defs>
+<rect width="400" height="300" fill="url(#a2)"/>
+<g fill="#f3e6cf" opacity=".13"><polygon points="60,0 100,0 215,205 15,205"/><polygon points="300,0 340,0 395,205 190,205"/><polygon points="170,0 230,0 305,205 105,205"/></g>
+<rect x="34" y="70" width="332" height="112" rx="8" fill="#1a0509" opacity=".55"/>
+<text x="200" y="140" text-anchor="middle" font-family="Bricolage Grotesque, Segoe UI, sans-serif" font-weight="800" font-size="40" letter-spacing="3" fill="#f3e6cf">ALCHERINGA</text>
+<text x="200" y="166" text-anchor="middle" font-family="Bricolage Grotesque, Segoe UI, sans-serif" font-weight="700" font-size="15" letter-spacing="6" fill="#e9c98f">ANNUAL FEST 2026</text>
+<rect y="190" width="400" height="14" fill="#b99a68"/><use href="#person" x="-6" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="32" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="70" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="108" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="146" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="184" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="222" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="260" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="298" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="336" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="374" y="202" width="30" height="45" fill="#3a0f19"/><use href="#person" x="10" y="228" width="40" height="60" fill="#12040a"/><use href="#person" x="55" y="228" width="40" height="60" fill="#12040a"/><use href="#person" x="100" y="228" width="40" height="60" fill="#12040a"/><use href="#person" x="145" y="228" width="40" height="60" fill="#12040a"/><use href="#person" x="190" y="228" width="40" height="60" fill="#12040a"/><use href="#person" x="235" y="228" width="40" height="60" fill="#12040a"/><use href="#person" x="280" y="228" width="40" height="60" fill="#12040a"/><use href="#person" x="325" y="228" width="40" height="60" fill="#12040a"/><use href="#person" x="370" y="228" width="40" height="60" fill="#12040a"/><rect x="48" y="218" width="6" height="9" rx="1" fill="#f3e6cf"/><rect x="150" y="226" width="6" height="9" rx="1" fill="#f3e6cf"/><rect x="255" y="220" width="6" height="9" rx="1" fill="#f3e6cf"/><rect x="338" y="228" width="6" height="9" rx="1" fill="#f3e6cf"/></svg>
+            <img src="images/tech-fest.jpg" alt="Crowd at the annual tech fest opening" loading="lazy" onerror="this.remove()">
+            <figcaption>Innovacion, annual tech fest</figcaption>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Open photo: Deep learning workshop">
+            <svg class="ph-art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#e7d6b8"/>
+<rect x="60" y="24" width="280" height="140" rx="6" fill="#faf2e2" stroke="#6a1523" stroke-width="4"/><line x1="110" y1="58" x2="200" y2="48" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="58" x2="200" y2="78" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="58" x2="200" y2="108" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="58" x2="200" y2="138" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="92" x2="200" y2="48" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="92" x2="200" y2="78" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="92" x2="200" y2="108" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="92" x2="200" y2="138" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="126" x2="200" y2="48" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="126" x2="200" y2="78" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="126" x2="200" y2="108" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="110" y1="126" x2="200" y2="138" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="200" y1="48" x2="290" y2="66" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="200" y1="48" x2="290" y2="118" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="200" y1="78" x2="290" y2="66" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="200" y1="78" x2="290" y2="118" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="200" y1="108" x2="290" y2="66" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="200" y1="108" x2="290" y2="118" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="200" y1="138" x2="290" y2="66" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><line x1="200" y1="138" x2="290" y2="118" stroke="#6a1523" stroke-opacity=".3" stroke-width="1.5"/><circle cx="110" cy="58" r="8" fill="#6a1523"/><circle cx="110" cy="92" r="8" fill="#6a1523"/><circle cx="110" cy="126" r="8" fill="#6a1523"/><circle cx="200" cy="48" r="8" fill="#6a1523"/><circle cx="200" cy="78" r="8" fill="#6a1523"/><circle cx="200" cy="108" r="8" fill="#6a1523"/><circle cx="200" cy="138" r="8" fill="#6a1523"/><circle cx="290" cy="66" r="8" fill="#6a1523"/><circle cx="290" cy="118" r="8" fill="#6a1523"/><text x="200" y="156" text-anchor="middle" font-family="Bricolage Grotesque, Segoe UI, sans-serif" font-weight="700" font-size="11" fill="#6a1523">input, hidden, output</text>
+<rect y="208" width="400" height="92" fill="#6a1523"/><rect y="204" width="400" height="8" fill="#8b3a47"/><use href="#person" x="50" y="172" width="40" height="60" fill="#4a0b17"/><rect x="30" y="212" width="90" height="50" rx="5" fill="#2a0b14"/><rect x="38" y="220" width="30" height="4" rx="2" fill="#e9c98f"/><rect x="38" y="230" width="52" height="4" rx="2" fill="#b99a68"/><rect x="38" y="240" width="40" height="4" rx="2" fill="#e9c98f" opacity=".6"/><use href="#person" x="170" y="172" width="40" height="60" fill="#4a0b17"/><rect x="150" y="212" width="90" height="50" rx="5" fill="#2a0b14"/><rect x="158" y="220" width="30" height="4" rx="2" fill="#e9c98f"/><rect x="158" y="230" width="52" height="4" rx="2" fill="#b99a68"/><rect x="158" y="240" width="40" height="4" rx="2" fill="#e9c98f" opacity=".6"/><use href="#person" x="290" y="172" width="40" height="60" fill="#4a0b17"/><rect x="270" y="212" width="90" height="50" rx="5" fill="#2a0b14"/><rect x="278" y="220" width="30" height="4" rx="2" fill="#e9c98f"/><rect x="278" y="230" width="52" height="4" rx="2" fill="#b99a68"/><rect x="278" y="240" width="40" height="4" rx="2" fill="#e9c98f" opacity=".6"/></svg>
+            <img src="images/workshop.jpg" alt="Hands-on machine learning workshop in the AIML lab" loading="lazy" onerror="this.remove()">
+            <figcaption>Deep learning workshop, AIML lab</figcaption>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Open photo: Cultural night">
+            <svg class="ph-art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#2a0b14"/>
+<path d="M0 0H95Q70 80 85 300H0Z" fill="#6a1523"/><path d="M400 0H305Q330 80 315 300H400Z" fill="#6a1523"/>
+<g stroke="#4a0b17" stroke-width="3" fill="none"><path d="M25 0Q18 150 28 300"/><path d="M55 0Q46 150 58 300"/><path d="M375 0Q382 150 372 300"/><path d="M345 0Q354 150 342 300"/></g>
+<polygon points="200,0 120,250 280,250" fill="#f3e6cf" opacity=".17"/>
+<rect y="244" width="400" height="56" fill="#b99a68"/><ellipse cx="200" cy="252" rx="92" ry="12" fill="#f3e6cf" opacity=".45"/>
+<g stroke="#f3e6cf" stroke-width="8" stroke-linecap="round" fill="none"><path d="M200 118V176"/><path d="M200 130L168 98"/><path d="M200 130L236 108"/><path d="M200 176L178 240"/><path d="M200 176L228 226"/></g>
+<circle cx="200" cy="100" r="14" fill="#f3e6cf"/>
+<g font-family="Bricolage Grotesque, Segoe UI, sans-serif" font-weight="800" fill="#e9c98f"><text x="130" y="110" font-size="26">&#9834;</text><text x="258" y="86" font-size="32">&#9835;</text><text x="300" y="170" font-size="22">&#9834;</text><text x="92" y="190" font-size="24">&#9835;</text></g>
+<g fill="#f3e6cf"><circle cx="130" cy="40" r="2"/><circle cx="270" cy="30" r="2.5"/><circle cx="210" cy="22" r="2"/><circle cx="160" cy="70" r="1.8"/><circle cx="320" cy="60" r="2"/></g></svg>
+            <img src="images/cultural-night.jpg" alt="Stage performance during the cultural night" loading="lazy" onerror="this.remove()">
+            <figcaption>Cultural night, department stage</figcaption>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Open photo: Line-follower robotics challenge">
+            <svg class="ph-art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="a5" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#6a1523" stroke-opacity=".14"/></pattern></defs>
+<rect width="400" height="300" fill="#e7d6b8"/><rect width="400" height="300" fill="url(#a5)"/>
+<path d="M-10 250C70 120 150 280 225 170S350 80 410 140" fill="none" stroke="#2a0b14" stroke-width="18" stroke-linecap="round"/>
+<path d="M-10 250C70 120 150 280 225 170S350 80 410 140" fill="none" stroke="#e9c98f" stroke-width="3" stroke-dasharray="9 9"/>
+<g transform="translate(206 168) rotate(-38)">
+<rect x="-24" y="-22" width="12" height="9" rx="2" fill="#2a0b14"/><rect x="-24" y="13" width="12" height="9" rx="2" fill="#2a0b14"/>
+<rect x="6" y="-22" width="12" height="9" rx="2" fill="#2a0b14"/><rect x="6" y="13" width="12" height="9" rx="2" fill="#2a0b14"/>
+<rect x="-26" y="-14" width="52" height="28" rx="7" fill="#6a1523" stroke="#faf2e2" stroke-width="2"/>
+<circle cx="14" cy="-5" r="4" fill="#e9c98f"/><circle cx="14" cy="5" r="4" fill="#e9c98f"/>
+<path d="M-26 0L-36 0" stroke="#2a0b14" stroke-width="3"/><circle cx="-38" cy="0" r="3" fill="#b99a68"/></g>
+<g fill="#b99a68" stroke="#6a1523" stroke-width="2"><polygon points="70,206 82,206 76,188"/><polygon points="300,126 312,126 306,108"/><polygon points="120,108 132,108 126,90"/></g>
+<g><rect x="318" y="66" width="3" height="46" fill="#2a0b14"/><rect x="321" y="68" width="8" height="8" fill="#2a0b14"/><rect x="329" y="68" width="8" height="8" fill="#faf2e2"/><rect x="337" y="68" width="8" height="8" fill="#2a0b14"/><rect x="345" y="68" width="8" height="8" fill="#faf2e2"/><rect x="321" y="76" width="8" height="8" fill="#faf2e2"/><rect x="329" y="76" width="8" height="8" fill="#2a0b14"/><rect x="337" y="76" width="8" height="8" fill="#faf2e2"/><rect x="345" y="76" width="8" height="8" fill="#2a0b14"/><rect x="321" y="84" width="8" height="8" fill="#2a0b14"/><rect x="329" y="84" width="8" height="8" fill="#faf2e2"/><rect x="337" y="84" width="8" height="8" fill="#2a0b14"/><rect x="345" y="84" width="8" height="8" fill="#faf2e2"/></g></svg>
+            <img src="images/robotics.jpg" alt="Robot on the line-follower track at the robotics challenge" loading="lazy" onerror="this.remove()">
+            <figcaption>Line-follower robotics challenge</figcaption>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Open photo: Industry guest lecture">
+            <svg class="ph-art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#2a0b14"/>
+<rect x="176" y="26" width="196" height="116" rx="6" fill="#faf2e2" stroke="#b99a68" stroke-width="3"/>
+<rect x="192" y="40" width="90" height="7" rx="3" fill="#6a1523"/><rect x="192" y="54" width="60" height="5" rx="2" fill="#b99a68"/>
+<g fill="#6a1523"><rect x="198" y="104" width="22" height="26"/><rect x="230" y="92" width="22" height="38"/><rect x="262" y="80" width="22" height="50"/><rect x="294" y="70" width="22" height="60"/><rect x="326" y="62" width="22" height="68"/></g>
+<path d="M194 98L248 84L286 70L318 60L352 50" fill="none" stroke="#8b3a47" stroke-width="2" stroke-dasharray="4 4"/>
+<use href="#person" x="52" y="88" width="70" height="105" fill="#d9b98a"/>
+<rect x="118" y="150" width="62" height="60" rx="4" fill="#6a1523" stroke="#b99a68" stroke-width="2"/>
+<path d="M149 150V132" stroke="#b99a68" stroke-width="3"/><circle cx="149" cy="130" r="4" fill="#f3e6cf"/>
+<rect y="206" width="400" height="94" fill="#1a0509"/><use href="#person" x="-4" y="214" width="32" height="48" fill="#3a0f19"/><use href="#person" x="38" y="214" width="32" height="48" fill="#3a0f19"/><use href="#person" x="80" y="214" width="32" height="48" fill="#3a0f19"/><use href="#person" x="122" y="214" width="32" height="48" fill="#3a0f19"/><use href="#person" x="164" y="214" width="32" height="48" fill="#3a0f19"/><use href="#person" x="206" y="214" width="32" height="48" fill="#3a0f19"/><use href="#person" x="248" y="214" width="32" height="48" fill="#3a0f19"/><use href="#person" x="290" y="214" width="32" height="48" fill="#3a0f19"/><use href="#person" x="332" y="214" width="32" height="48" fill="#3a0f19"/><use href="#person" x="374" y="214" width="32" height="48" fill="#3a0f19"/><use href="#person" x="14" y="244" width="40" height="60" fill="#0e0306"/><use href="#person" x="64" y="244" width="40" height="60" fill="#0e0306"/><use href="#person" x="114" y="244" width="40" height="60" fill="#0e0306"/><use href="#person" x="164" y="244" width="40" height="60" fill="#0e0306"/><use href="#person" x="214" y="244" width="40" height="60" fill="#0e0306"/><use href="#person" x="264" y="244" width="40" height="60" fill="#0e0306"/><use href="#person" x="314" y="244" width="40" height="60" fill="#0e0306"/><use href="#person" x="364" y="244" width="40" height="60" fill="#0e0306"/></svg>
+            <img src="images/guest-lecture.jpg" alt="Guest speaker addressing students in the seminar hall" loading="lazy" onerror="this.remove()">
+            <figcaption>Industry guest lecture, seminar hall</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <dialog id="lightbox" aria-label="Photo viewer">
+      <div class="lightbox-box">
+        <button class="icon-btn lightbox-close" id="lbClose" aria-label="Close photo">&times;</button>
+        <div class="lightbox-stage" id="lbStage"></div>
+        <div class="lightbox-cap">
+          <span id="lbCaption"></span>
+          <span class="lightbox-nav">
+            <button class="icon-btn" id="lbPrev" aria-label="Previous photo">&#8592;</button>
+            <button class="icon-btn" id="lbNext" aria-label="Next photo">&#8594;</button>
+          </span>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="eventModal" aria-label="Event details">
+      <div class="modal-box">
+        <button class="icon-btn modal-close" id="mdClose" aria-label="Close details">&times;</button>
+        <span class="tag" id="mdTag"></span>
+        <h3 id="mdTitle"></h3>
+        <p id="mdDesc"></p>
+        <dl class="modal-list" id="mdList"></dl>
+        <div class="hero-actions" style="margin-top:0">
+          <button class="btn btn-primary" id="mdRegister">Get a pass</button>
+          <button class="btn btn-ghost" id="mdCal">Add to calendar</button>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- ===================== ABOUT US ===================== -->
+    <section class="section section-tinted" id="crew">
+      <div class="wrap about-grid">
+        <div>
+          <div class="section-head reveal">
+            <h2>The crew behind it</h2>
+          </div>
+          <p>
+            The Department of Computer Science &amp; Engineering (Artificial Intelligence and
+            Machine Learning) at the Institute of Engineering &amp; Management, Kolkata, offers a
+            four-year B.Tech programme focused on machine learning, deep learning, data science
+            and their applications. The department runs dedicated AIML and IoT laboratories
+            and works closely with the IETE Student Forum and the institute's innovation cell.
+          </p>
+          <p>
+            Department events are planned by a student committee under faculty guidance.
+            Every event listed on this site is open to students across all branches unless
+            stated otherwise.
+          </p>
+          <div class="labs" aria-label="Facilities">
+            <span>AIML lab</span><span>IoT lab</span><span>Innovation cell</span><span>IETE Student Forum</span>
+          </div>
+        </div>
+
+        <div class="coordinators">
+          <h3>Event coordinators</h3>
+          <!-- Coordinators: edit names and roles here -->
+          <dl class="coord-list">
+            <div>
+              <div class="avatar" aria-hidden="true">AM</div>
+              <div><dt>Head of Department</dt>
+              <dd>Dr. Amartya Mukherjee<span>HOD, CSE (AIML)</span></dd></div>
+            </div>
+            <div>
+              <div class="avatar" aria-hidden="true">PM</div>
+              <div><dt>Faculty coordinator</dt>
+              <dd>Prof. Piyali Mukherjee<span>Faculty, CSE (AIML)</span></dd></div>
+            </div>
+            <div>
+              <div class="avatar" aria-hidden="true">AS</div>
+              <div><dt>Student coordinator</dt>
+              <dd>Aritra Sarkar<span>3rd year, CSE (AIML)</span></dd></div>
+            </div>
+            <div>
+              <div class="avatar" aria-hidden="true">IC</div>
+              <div><dt>Technical lead</dt>
+              <dd>Ishita Chatterjee<span>4th year, CSE (AIML)</span></dd></div>
+            </div>
+            <div>
+              <div class="avatar" aria-hidden="true">AC</div>
+              <div><dt>Cultural lead</dt>
+              <dd>Adrija Chanda<span>2nd year, CSE (AIML)</span></dd></div>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Questions people ask</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Who can take part?</summary>
+            <p>Any B.Tech student of IEM, from any branch and any year, unless an event says otherwise on its card.</p>
+          </details>
+          <details>
+            <summary>Is there a fee?</summary>
+            <p>Most department events are free. Events with a fee show it on the card, and you pay at the registration desk on the day.</p>
+          </details>
+          <details>
+            <summary>Can I register for more than one event?</summary>
+            <p>Yes. Submit the form once for each event. You cannot register for the same event twice with the same roll number.</p>
+          </details>
+          <details>
+            <summary>I cannot make it any more. What do I do?</summary>
+            <p>Cancel your pass from the list under the registration form, so the seat goes to someone else.</p>
+          </details>
+          <details>
+            <summary>Do I need to bring anything?</summary>
+            <p>Your college ID and your pass ID. For hackathons and workshops, bring a laptop and a charger.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section section-tinted" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <div class="section-head reveal">
+            <h2>Reach out</h2>
+            <p>Questions about an event, sponsorship, or a registration problem? Write to us.</p>
+          </div>
+          <address class="contact-details">
+            <p><strong>Address</strong><br>
+              Department of CSE (AIML), Institute of Engineering &amp; Management<br>
+              Gurukul Campus, Y-12, Block EP, Sector V, Salt Lake<br>
+              Kolkata 700091, West Bengal, India</p>
+            <p><strong>Email</strong><br><a href="mailto:events.aiml@iem.edu.in">events.aiml@iem.edu.in</a></p>
+            <p><strong>Phone</strong><br><a href="tel:+913323572059">+91 33 2357 2059</a></p>
+            <p><strong>Office hours</strong><br>Monday to Friday, 10:00 to 17:00</p>
+          </address>
+        </div>
+
+        <form class="form" id="feedbackForm" novalidate>
+          <h3>Send feedback</h3>
+          <div class="field">
+            <label for="fbName">Your name</label>
+            <input type="text" id="fbName" name="fbName" autocomplete="name">
+            <small class="error" id="err-fbName"></small>
+          </div>
+          <div class="field">
+            <label for="fbEmail">Email</label>
+            <input type="email" id="fbEmail" name="fbEmail" autocomplete="email">
+            <small class="error" id="err-fbEmail"></small>
+          </div>
+          <div class="field">
+            <label for="fbMessage">Message <span class="counter" id="fbCount">0 / 500</span></label>
+            <textarea id="fbMessage" name="fbMessage" rows="5" maxlength="500" placeholder="Tell us what worked, what didn't, or what you'd like to see next."></textarea>
+            <small class="error" id="err-fbMessage"></small>
+          </div>
+          <button type="submit" class="btn btn-primary">Send feedback</button>
+          <p class="form-status" id="fbStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <h2>Get event updates in your inbox.</h2>
+        <form class="news" id="newsForm" novalidate>
+          <label for="newsEmail" class="sr-only">Email for updates</label>
+          <input type="email" id="newsEmail" placeholder="you@iem.edu.in" autocomplete="email">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+          <small id="newsMsg" role="status" aria-live="polite"></small>
+        </form>
+      </div>
+      <div class="footer-inner">
+        <p>&copy; 2026 Department of CSE (AIML), Institute of Engineering &amp; Management, Kolkata.</p>
+        <p>Built with HTML5, CSS3 and JavaScript for PCCCS382, IT Workshop.</p>
+        <a href="#top" class="back-top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* =========================================================
+       DATA: edit this array to change the events on the page.
+       Dates are in IST (+05:30). Past events are hidden from the
+       countdown automatically.
+       ========================================================= */
+    var EVENTS = [
+      { id: 'neural-nights', title: 'Neural Nights Hackathon', cat: 'technical', start: '2026-10-24T09:00:00+05:30', end: '2026-10-25T09:00:00+05:30',
+        venue: 'AIML Lab and Seminar Hall', fee: 'Free', total: 120, taken: 74, featured: false,
+        desc: 'Twenty-four hours, teams of up to four, one problem statement revealed at kickoff. Mentors on call all night.' },
+      { id: 'genai-workshop', title: 'Prompt and Prototype: GenAI Workshop', cat: 'workshop', start: '2026-10-30T14:00:00+05:30', end: '2026-10-30T17:30:00+05:30',
+        venue: 'Computer Lab 3', fee: 'Free', total: 60, taken: 41, featured: false,
+        desc: 'Hands-on session on building a small generative AI app from scratch. Bring a laptop, leave with a working demo.' },
+      { id: 'rangmanch', title: 'Rangmanch Cultural Evening', cat: 'cultural', start: '2026-11-07T17:30:00+05:30', end: '2026-11-07T21:30:00+05:30',
+        venue: 'Open Air Stage, Gurukul Campus', fee: 'Free', total: 300, taken: 128, featured: false,
+        desc: 'Music, dance, stand-up and theatre from students across branches. Auditions open until the week before.' },
+      { id: 'notebook-to-prod', title: 'Guest Lecture: From Notebook to Production', cat: 'lecture', start: '2026-11-14T11:00:00+05:30', end: '2026-11-14T13:00:00+05:30',
+        venue: 'Seminar Hall', fee: 'Free', total: 150, taken: 63, featured: false,
+        desc: 'An engineering lead from the industry on deploying, monitoring and fixing machine learning systems at scale.' },
+      { id: 'bot-bazaar', title: 'Bot Bazaar Robotics Challenge', cat: 'technical', start: '2026-11-21T10:00:00+05:30', end: '2026-11-21T16:00:00+05:30',
+        venue: 'IoT Lab and Corridor Arena', fee: 'Rs. 100 per team', total: 40, taken: 29, featured: false,
+        desc: 'Line-follower and obstacle-course rounds. Build before the day, tune at the arena, race for the trophy.' },
+      { id: 'data-sprint', title: 'Data Sprint: Kaggle Kickoff Workshop', cat: 'workshop', start: '2026-11-28T10:00:00+05:30', end: '2026-11-28T16:00:00+05:30',
+        venue: 'Computer Lab 1', fee: 'Free', total: 70, taken: 22, featured: false,
+        desc: 'From loading a messy CSV to submitting your first competition entry in a single day.' },
+      { id: 'ai-ethics', title: 'Panel: Who Is Accountable for AI?', cat: 'lecture', start: '2026-12-05T15:00:00+05:30', end: '2026-12-05T17:00:00+05:30',
+        venue: 'Seminar Hall', fee: 'Free', total: 150, taken: 35, featured: false,
+        desc: 'Faculty, engineers and students debate fairness, privacy and responsibility in deployed models. Audience questions welcome.' },
+      { id: 'alcheringa-fest', title: 'Alcheringa 2026: The Annual Tech and Culture Fest', cat: 'technical', start: '2026-12-12T09:00:00+05:30', end: '2026-12-13T20:00:00+05:30',
+        venue: 'Gurukul Campus, all venues', fee: 'Free entry', total: 1000, taken: 412, featured: true,
+        desc: 'Two days of keynotes, contests, project expos, robotics, music and the closing ceremony. The big one.' }
+    ];
+
+    var DAYS = {
+      d1: [
+        ['09:00', 'Inauguration and keynote', 'Opening address by the faculty coordinator, followed by the guest keynote on applied ML.'],
+        ['10:30', 'Project expo opens', 'Student projects from every year, set up across the AIML and IoT labs.'],
+        ['12:00', 'Hackathon finals', 'Top teams pitch to a panel of mentors. Five minutes each, two for questions.'],
+        ['14:00', 'Lunch and lab tours', 'Break, plus guided tours of the AIML and IoT laboratories.'],
+        ['15:30', 'Workshop: building with GenAI', 'A hands-on session open to all registered participants.'],
+        ['18:00', 'Cultural evening', 'Music, dance and theatre on the open-air stage.']
+      ],
+      d2: [
+        ['09:30', 'Robotics arena', 'Line-follower and obstacle rounds, final heats before noon.'],
+        ['11:00', 'Guest talk: from hackathon to startup', 'A founder shares the messy middle between a demo and a product.'],
+        ['13:00', 'Lunch break', 'Food stalls run by student clubs.'],
+        ['14:30', 'Closing panel: responsible AI', 'Faculty and industry guests answer audience questions.'],
+        ['16:30', 'Prize distribution', 'Winners of every contest are announced and awarded.'],
+        ['18:00', 'Closing ceremony', 'Thanks, photos and a final performance.']
+      ]
+    };
+
+    var STORE_KEY = 'alcheringa-regs';
+
+    /* =========================================================
+       HELPERS
+       ========================================================= */
+    function $(id) { return document.getElementById(id); }
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    function store(get, key, val) {
+      try { if (get) return localStorage.getItem(key); localStorage.setItem(key, val); } catch (e) {}
+      return null;
+    }
+    function loadRegs() {
+      try { return JSON.parse(store(true, STORE_KEY) || '[]'); } catch (e) { return []; }
+    }
+    function saveRegs(list) { store(false, STORE_KEY, JSON.stringify(list)); }
+    function byId(id) { for (var i = 0; i < EVENTS.length; i++) if (EVENTS[i].id === id) return EVENTS[i]; return null; }
+    function d(ev) { return new Date(ev.start); }
+    function fmt(date, opts) { return new Intl.DateTimeFormat('en-IN', Object.assign({ timeZone: 'Asia/Kolkata' }, opts)).format(date); }
+    function seatsLeft(ev) {
+      var mine = loadRegs().filter(function (r) { return r.eventId === ev.id; }).length;
+      return Math.max(0, ev.total - ev.taken - mine);
+    }
+    var toastTimer;
+    function toast(msg) {
+      var t = $('toast');
+      t.textContent = msg; t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { t.classList.remove('show'); }, 3200);
+    }
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+    }
+
+    /* =========================================================
+       THEME TOGGLE
+       ========================================================= */
+    var root = document.documentElement;
+    var themeBtn = $('themeToggle');
+    function applyTheme(t) {
+      root.setAttribute('data-theme', t);
+      var dark = t === 'dark';
+      themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      themeBtn.querySelector('.theme-icon').innerHTML = dark ? '&#9728;' : '&#9790;';
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', dark ? '#2a0b14' : '#4a0b17');
+    }
+    applyTheme(root.getAttribute('data-theme') || 'light');
+    themeBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next); store(false, 'alcheringa-theme', next);
+    });
+
+    /* =========================================================
+       MOBILE NAV + ACTIVE LINK + SCROLL PROGRESS
+       ========================================================= */
+    var nav = $('siteNav'), navToggle = $('navToggle');
+    navToggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open);
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) { nav.classList.remove('open'); navToggle.setAttribute('aria-expanded', 'false'); navToggle.focus(); }
+    });
+
+    var progressBar = $('progressBar');
+    function onScroll() {
+      var h = document.documentElement;
+      var pct = (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight)) * 100;
+      progressBar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    var navLinks = nav.querySelectorAll('a');
+    var linkFor = {};
+    navLinks.forEach(function (a) { linkFor[a.getAttribute('href').slice(1)] = a; });
+    if ('IntersectionObserver' in window) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && linkFor[en.target.id]) {
+            navLinks.forEach(function (a) { a.classList.remove('is-active'); });
+            linkFor[en.target.id].classList.add('is-active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      Object.keys(linkFor).forEach(function (id) { var s = $(id); if (s) spy.observe(s); });
+    }
+
+    /* Reveal headings */
+    var reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var rv = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); rv.unobserve(en.target); } });
+      }, { threshold: .15 });
+      reveals.forEach(function (el) { rv.observe(el); });
+    } else { reveals.forEach(function (el) { el.classList.add('in'); }); }
+
+    /* =========================================================
+       MARQUEE
+       ========================================================= */
+    (function () {
+      var names = EVENTS.map(function (e) { return e.title.split(':')[0]; });
+      var html = names.map(function (n) { return '<span>' + esc(n) + '</span>'; }).join('');
+      $('marqueeTrack').innerHTML = html + html;
+    })();
+
+    /* =========================================================
+       STATS COUNTERS
+       ========================================================= */
+    (function () {
+      var items = document.querySelectorAll('[data-count]');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function run(el) {
+        var target = +el.getAttribute('data-count'), suffix = el.getAttribute('data-suffix') || '';
+        if (reduce) { el.textContent = target + suffix; return; }
+        var t0 = null, dur = 1400;
+        function step(ts) {
+          if (!t0) t0 = ts;
+          var p = Math.min(1, (ts - t0) / dur), eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } });
+        }, { threshold: .6 });
+        items.forEach(function (el) { io.observe(el); });
+      } else items.forEach(run);
+    })();
+
+    /* =========================================================
+       JS FEATURE 1 + 2: COUNTDOWN AND CLOCK
+       ========================================================= */
+    function nextEvent() {
+      var now = Date.now(), best = null;
+      EVENTS.forEach(function (ev) {
+        var t = d(ev).getTime();
+        if (t > now && (!best || t < d(best).getTime())) best = ev;
+      });
+      return best;
+    }
+    var target = nextEvent();
+    function paintCountdownHeader() {
+      if (target) {
+        $('cdTitle').textContent = target.title;
+        $('cdMeta').textContent = fmt(d(target), { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' }) + ', ' + target.venue;
+      } else {
+        $('cdTitle').textContent = 'The season has wrapped up';
+        $('cdMeta').textContent = 'New dates are coming soon. Subscribe below to hear first.';
+      }
+    }
+    function tick() {
+      $('clock').textContent = new Date().toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour12: true });
+      var diff = 0;
+      if (target) {
+        diff = d(target).getTime() - Date.now();
+        if (diff <= 0) { target = nextEvent(); paintCountdownHeader(); diff = target ? d(target).getTime() - Date.now() : 0; }
+      }
+      var s = Math.max(0, Math.floor(diff / 1000));
+      $('cdDays').textContent = pad(Math.floor(s / 86400));
+      $('cdHours').textContent = pad(Math.floor(s % 86400 / 3600));
+      $('cdMins').textContent = pad(Math.floor(s % 3600 / 60));
+      $('cdSecs').textContent = pad(s % 60);
+    }
+    paintCountdownHeader(); tick(); setInterval(tick, 1000);
+
+    /* =========================================================
+       JS FEATURE 3: RENDER + FILTER + SEARCH EVENTS
+       ========================================================= */
+    var CAT_LABEL = { technical: 'Technical', workshop: 'Workshop', cultural: 'Cultural', lecture: 'Lecture' };
+    var activeFilter = 'all', query = '';
+    var list = $('eventList');
+
+    function ticketHTML(ev) {
+      var date = d(ev), left = seatsLeft(ev), used = Math.round(((ev.total - left) / ev.total) * 100);
+      var time = fmt(date, { hour: 'numeric', minute: '2-digit' });
+      var endTime = fmt(new Date(ev.end), { hour: 'numeric', minute: '2-digit' });
+      var past = date.getTime() < Date.now();
+      return '' +
+        '<li class="ticket' + (ev.featured ? ' is-featured' : '') + '" data-cat="' + ev.cat + '" data-id="' + ev.id + '">' +
+          '<div class="ticket-stub">' +
+            '<span class="mo">' + fmt(date, { month: 'short' }) + '</span>' +
+            '<span class="dy">' + fmt(date, { day: 'numeric' }) + '</span>' +
+            '<span class="wd">' + fmt(date, { weekday: 'short' }) + '</span>' +
+          '</div>' +
+          '<div class="ticket-body">' +
+            '<span class="tag">' + CAT_LABEL[ev.cat] + (ev.featured ? ', flagship' : '') + '</span>' +
+            '<h3>' + esc(ev.title) + '</h3>' +
+            '<p>' + esc(ev.desc) + '</p>' +
+            '<ul class="meta"><li>' + time + ' to ' + endTime + '</li><li>' + esc(ev.venue) + '</li><li>' + esc(ev.fee) + '</li></ul>' +
+            '<div class="seats"><div class="bar" role="img" aria-label="' + used + ' percent full"><i style="width:' + used + '%"></i></div>' +
+            '<span>' + (left === 0 ? 'Full' : left + ' seats left') + '</span></div>' +
+          '</div>' +
+          '<div class="ticket-actions">' +
+            '<button class="btn btn-primary btn-small" data-act="register" ' + (left === 0 || past ? 'disabled' : '') + '>' + (left === 0 ? 'Sold out' : 'Get a pass') + '</button>' +
+            '<button class="btn btn-ghost btn-small" data-act="details">Details</button>' +
+            '<button class="btn btn-ghost btn-small" data-act="calendar">Add to calendar</button>' +
+          '</div>' +
+        '</li>';
+    }
+
+    function renderEvents() {
+      var sorted = EVENTS.slice().sort(function (a, b) { return d(a) - d(b); });
+      var shown = sorted.filter(function (ev) {
+        var okCat = activeFilter === 'all' || ev.cat === activeFilter;
+        var q = query.toLowerCase();
+        var okQ = !q || (ev.title + ' ' + ev.desc + ' ' + ev.venue).toLowerCase().indexOf(q) > -1;
+        return okCat && okQ;
+      });
+      list.innerHTML = shown.map(ticketHTML).join('');
+      $('eventEmpty').hidden = shown.length > 0;
+    }
+
+    $('eventFilters').addEventListener('click', function (e) {
+      var btn = e.target.closest('.chip');
+      if (!btn) return;
+      activeFilter = btn.getAttribute('data-filter');
+      document.querySelectorAll('#eventFilters .chip').forEach(function (c) { c.classList.toggle('is-active', c === btn); });
+      renderEvents();
+    });
+    $('eventSearch').addEventListener('input', function (e) { query = e.target.value.trim(); renderEvents(); });
+
+    list.addEventListener('click', function (e) {
+      var btn = e.target.closest('button[data-act]');
+      if (!btn) return;
+      var id = btn.closest('.ticket').getAttribute('data-id'), act = btn.getAttribute('data-act');
+      if (act === 'register') goRegister(id);
+      if (act === 'details') openDetails(id);
+      if (act === 'calendar') downloadICS(id);
+    });
+
+    function goRegister(id) {
+      $('eventSelect').value = id;
+      updatePass();
+      $('passes').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(function () { $('studentName').focus({ preventScroll: true }); }, 500);
+    }
+
+    /* Event details modal */
+    var modal = $('eventModal'), modalId = null;
+    function openDetails(id) {
+      var ev = byId(id); modalId = id;
+      $('mdTag').textContent = CAT_LABEL[ev.cat];
+      $('mdTitle').textContent = ev.title;
+      $('mdDesc').textContent = ev.desc;
+      var date = d(ev);
+      var rows = [
+        ['Date', fmt(date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })],
+        ['Time', fmt(date, { hour: 'numeric', minute: '2-digit' }) + ' to ' + fmt(new Date(ev.end), { hour: 'numeric', minute: '2-digit' })],
+        ['Venue', ev.venue], ['Entry', ev.fee],
+        ['Capacity', ev.total + ' seats'], ['Seats left', String(seatsLeft(ev))]
+      ];
+      $('mdList').innerHTML = rows.map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('');
+      if (modal.showModal) modal.showModal(); else modal.setAttribute('open', '');
+    }
+    function closeDialog(dlg) { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
+    $('mdClose').addEventListener('click', function () { closeDialog(modal); });
+    $('mdRegister').addEventListener('click', function () { closeDialog(modal); goRegister(modalId); });
+    $('mdCal').addEventListener('click', function () { downloadICS(modalId); });
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeDialog(modal); });
+
+    /* Add to calendar (.ics download) */
+    function icsDate(dt) { return dt.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''); }
+    function downloadICS(id) {
+      var ev = byId(id);
+      var lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Alcheringa 2026//IEM CSE AIML//EN', 'BEGIN:VEVENT',
+        'UID:' + ev.id + '@alcheringa2026', 'DTSTAMP:' + icsDate(new Date()), 'DTSTART:' + icsDate(new Date(ev.start)), 'DTEND:' + icsDate(new Date(ev.end)),
+        'SUMMARY:' + ev.title, 'LOCATION:' + ev.venue + ', IEM Kolkata', 'DESCRIPTION:' + ev.desc, 'END:VEVENT', 'END:VCALENDAR'];
+      var blob = new Blob([lines.join('\r\n')], { type: 'text/calendar' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = ev.id + '.ics';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+      toast('Calendar file downloaded');
+    }
+
+    /* =========================================================
+       SCHEDULE TABS
+       ========================================================= */
+    function renderDay(key) {
+      $('timeline').innerHTML = DAYS[key].map(function (row) {
+        return '<div class="tl-item"><div class="tl-time">' + row[0] + '</div><div class="tl-card"><h4>' + esc(row[1]) + '</h4><p>' + esc(row[2]) + '</p></div></div>';
+      }).join('');
+    }
+    $('dayTabs').addEventListener('click', function (e) {
+      var b = e.target.closest('.chip'); if (!b) return;
+      document.querySelectorAll('#dayTabs .chip').forEach(function (c) { var on = c === b; c.classList.toggle('is-active', on); c.setAttribute('aria-selected', on); });
+      renderDay(b.getAttribute('data-day'));
+    });
+    renderDay('d1');
+
+    /* =========================================================
+       GALLERY LIGHTBOX
+       ========================================================= */
+    var tiles = Array.prototype.slice.call(document.querySelectorAll('.gallery-item'));
+    var lb = $('lightbox'), lbIndex = 0;
+    function showTile(i) {
+      lbIndex = (i + tiles.length) % tiles.length;
+      var t = tiles[lbIndex];
+      $('lbStage').innerHTML = '';
+      var ph = t.querySelector('.ph-art'); if (ph) $('lbStage').appendChild(ph.cloneNode(true));
+      var im = t.querySelector('img');
+      if (im) { var c = im.cloneNode(); c.removeAttribute('loading'); c.onerror = function () { c.remove(); }; $('lbStage').appendChild(c); }
+      $('lbCaption').textContent = t.querySelector('figcaption').textContent;
+    }
+    function openTile(i) { showTile(i); if (lb.showModal) lb.showModal(); else lb.setAttribute('open', ''); }
+    tiles.forEach(function (t, i) {
+      t.addEventListener('click', function () { openTile(i); });
+      t.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openTile(i); } });
+    });
+    $('lbPrev').addEventListener('click', function () { showTile(lbIndex - 1); });
+    $('lbNext').addEventListener('click', function () { showTile(lbIndex + 1); });
+    $('lbClose').addEventListener('click', function () { closeDialog(lb); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) closeDialog(lb); });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') showTile(lbIndex - 1);
+      if (e.key === 'ArrowRight') showTile(lbIndex + 1);
+    });
+
+    /* =========================================================
+       JS FEATURE 4: FORM VALIDATION (registration)
+       ========================================================= */
+    var regForm = $('regForm'), eventSelect = $('eventSelect');
+    EVENTS.slice().sort(function (a, b) { return d(a) - d(b); }).forEach(function (ev) {
+      var o = document.createElement('option');
+      o.value = ev.id; o.textContent = ev.title + ' (' + fmt(d(ev), { day: 'numeric', month: 'short' }) + ')';
+      eventSelect.appendChild(o);
+    });
+
+    function setError(fieldId, msg) {
+      var err = $('err-' + fieldId), input = $(fieldId);
+      if (err) err.textContent = msg || '';
+      if (input) { input.classList.toggle('is-invalid', !!msg); input.setAttribute('aria-invalid', msg ? 'true' : 'false'); }
+      return !msg;
+    }
+    var rules = {
+      studentName: function (v) { return /^[A-Za-z][A-Za-z .'-]{2,}$/.test(v) ? '' : 'Enter your full name (letters only, at least 3 characters).'; },
+      rollNo: function (v) { return /^\d{10}$/.test(v) ? '' : 'Roll number must be exactly 10 digits.'; },
+      department: function (v) { return v ? '' : 'Select your department.'; },
+      email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? '' : 'Enter a valid email, like you@iem.edu.in.'; },
+      phone: function (v) { return /^[6-9]\d{9}$/.test(v.replace(/^(\+91|0)/, '').replace(/[\s-]/g, '')) ? '' : 'Enter a 10-digit Indian mobile number starting with 6 to 9.'; },
+      eventSelect: function (v) { return v ? '' : 'Select the event you want to attend.'; }
+    };
+    Object.keys(rules).forEach(function (id) {
+      var el = $(id);
+      el.addEventListener('blur', function () { setError(id, rules[id](el.value.trim())); });
+      el.addEventListener('input', function () { if (el.classList.contains('is-invalid')) setError(id, rules[id](el.value.trim())); });
+    });
+    $('rollNo').addEventListener('input', function (e) { e.target.value = e.target.value.replace(/\D/g, ''); });
+
+    /* Live pass preview */
+    var pass = $('pass');
+    function updatePass(keepConfirmed) {
+      var ev = byId(eventSelect.value);
+      $('pvName').textContent = $('studentName').value.trim() || 'Your name';
+      $('pvRoll').textContent = $('rollNo').value.trim() || '0000000000';
+      $('pvDept').textContent = $('department').value || '\u2014';
+      $('pvEvent').textContent = ev ? ev.title : 'Pick an event';
+      $('pvDate').textContent = ev ? fmt(d(ev), { day: 'numeric', month: 'short', year: 'numeric' }) : '\u2014';
+      if (!keepConfirmed) {
+        pass.classList.remove('is-confirmed');
+        $('pvStamp').textContent = 'Draft';
+        $('pvId').textContent = 'No ID yet';
+      }
+    }
+    regForm.addEventListener('input', function () { updatePass(false); });
+    regForm.addEventListener('change', function () { updatePass(false); });
+
+    function renderMyPasses() {
+      var regs = loadRegs(), box = $('myPasses'), ul = $('myPassList');
+      box.hidden = regs.length === 0;
+      ul.innerHTML = '';
+      regs.forEach(function (r) {
+        var ev = byId(r.eventId); if (!ev) return;
+        var li = document.createElement('li');
+        var span = document.createElement('span');
+        span.textContent = ev.title + ', ' + r.name + ' (' + r.id + ')';
+        var btn = document.createElement('button');
+        btn.className = 'link-btn'; btn.type = 'button'; btn.textContent = 'Cancel pass';
+        btn.addEventListener('click', function () {
+          saveRegs(loadRegs().filter(function (x) { return x.id !== r.id; }));
+          renderMyPasses(); renderEvents(); toast('Pass ' + r.id + ' cancelled');
+        });
+        li.appendChild(span); li.appendChild(btn); ul.appendChild(li);
+      });
+    }
+
+    function makeId(roll, evId) {
+      var n = 0, s = roll + evId;
+      for (var i = 0; i < s.length; i++) n = (n * 31 + s.charCodeAt(i)) % 1000000;
+      return 'ALC-' + String(n).padStart(6, '0');
+    }
+
+    regForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = $('regStatus'); status.className = 'form-status'; status.textContent = '';
+      var ok = true, firstBad = null;
+      Object.keys(rules).forEach(function (id) {
+        var valid = setError(id, rules[id]($(id).value.trim()));
+        if (!valid && !firstBad) firstBad = $(id);
+        ok = ok && valid;
+      });
+      var genderEl = regForm.querySelector('input[name="gender"]:checked');
+      $('err-gender').textContent = genderEl ? '' : 'Choose one option.';
+      if (!genderEl) { ok = false; if (!firstBad) firstBad = regForm.querySelector('input[name="gender"]'); }
+
+      if (!ok) {
+        status.classList.add('bad'); status.textContent = 'Fix the highlighted fields and submit again.';
+        if (firstBad) firstBad.focus();
+        return;
+      }
+
+      var ev = byId(eventSelect.value), roll = $('rollNo').value.trim();
+      var regs = loadRegs();
+      if (regs.some(function (r) { return r.roll === roll && r.eventId === ev.id; })) {
+        status.classList.add('bad'); status.textContent = 'This roll number already has a pass for ' + ev.title + '.';
+        return;
+      }
+      if (seatsLeft(ev) <= 0) {
+        status.classList.add('bad'); status.textContent = 'Sorry, ' + ev.title + ' is full.';
+        return;
+      }
+
+      var id = makeId(roll, ev.id);
+      regs.push({ id: id, name: $('studentName').value.trim(), roll: roll, dept: $('department').value, email: $('email').value.trim(),
+        phone: $('phone').value.trim(), gender: genderEl.value, eventId: ev.id, at: Date.now() });
+      saveRegs(regs);
+
+      updatePass(true);
+      pass.classList.add('is-confirmed');
+      $('pvStamp').textContent = 'Confirmed';
+      $('pvId').textContent = id;
+      status.classList.add('ok');
+      status.textContent = 'Demo pass created for ' + $('studentName').value.trim().split(' ')[0] + '. It is saved only in this browser and no confirmation email is sent.';
+      toast('Pass ' + id + ' confirmed');
+      renderMyPasses(); renderEvents();
+
+      ['studentName', 'rollNo', 'email', 'phone'].forEach(function (f) { $(f).value = ''; });
+      $('department').value = ''; eventSelect.value = '';
+      genderEl.checked = false;
+    });
+
+    /* =========================================================
+       FEEDBACK FORM VALIDATION
+       ========================================================= */
+    var fbRules = {
+      fbName: function (v) { return v.length >= 3 ? '' : 'Enter your name (at least 3 characters).'; },
+      fbEmail: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? '' : 'Enter a valid email address.'; },
+      fbMessage: function (v) { return v.length >= 10 ? '' : 'Write at least 10 characters so we can act on it.'; }
+    };
+    Object.keys(fbRules).forEach(function (id) {
+      var el = $(id);
+      el.addEventListener('blur', function () { setError(id, fbRules[id](el.value.trim())); });
+      el.addEventListener('input', function () { if (el.classList.contains('is-invalid')) setError(id, fbRules[id](el.value.trim())); });
+    });
+    $('fbMessage').addEventListener('input', function (e) { $('fbCount').textContent = e.target.value.length + ' / 500'; });
+    $('feedbackForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var st = $('fbStatus'); st.className = 'form-status'; st.textContent = '';
+      var ok = true, bad = null;
+      Object.keys(fbRules).forEach(function (id) {
+        var v = setError(id, fbRules[id]($(id).value.trim()));
+        if (!v && !bad) bad = $(id);
+        ok = ok && v;
+      });
+      if (!ok) { st.classList.add('bad'); st.textContent = 'Fix the highlighted fields and send again.'; bad.focus(); return; }
+      st.classList.add('ok'); st.textContent = 'Thanks, ' + $('fbName').value.trim().split(' ')[0] + '. Your feedback has been sent.';
+      toast('Feedback sent');
+      e.target.reset(); $('fbCount').textContent = '0 / 500';
+    });
+
+    /* Newsletter */
+    $('newsForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = $('newsEmail').value.trim(), msg = $('newsMsg');
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { msg.textContent = 'Demo only: this page is not connected to an email subscription service.'; $('newsEmail').value = ''; toast('Demo only — no subscription sent'); }
+      else msg.textContent = 'Enter a valid email address.';
+    });
+
+    /* Initial render */
+    renderEvents();
+    renderMyPasses();
+    updatePass(false);
+  })();
+  </script>
+</body>
+</html>
